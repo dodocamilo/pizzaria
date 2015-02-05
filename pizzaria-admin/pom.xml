@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>your.groupid</groupId>
-	<artifactId>your-artifactid</artifactId>
+	<groupId>br.com.jonathan.pizzaria</groupId>
+	<artifactId>pizzaria-admin</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>br.com.caelum</groupId>
 			<artifactId>vraptor</artifactId>
-			<version>4.1.4-SNAPSHOT</version>
+			<version>4.1.4</version>
 		</dependency>
 
 		<dependency>
@@ -62,7 +62,7 @@
 
 	<build>
 		<finalName>vraptor-blank-project</finalName>
-		<outputDirectory>/Users/turini/Documents/workspace/vraptor4/vraptor-blank-project/src/main/webapp/WEB-INF/classes</outputDirectory>
+		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
