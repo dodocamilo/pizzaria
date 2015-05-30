@@ -6,7 +6,7 @@
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
-	<description>A blank project to start using VRaptor 4</description>
+	<description>Parte administrativa da pizzaria</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -58,10 +58,35 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.6.Final</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.33</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>br.com.caelum.vraptor</groupId>
+		    <artifactId>vraptor-jpa</artifactId>
+		    <version>4.0.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>vraptor-blank-project</finalName>
+		<finalName>pizzaria-admin</finalName>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
