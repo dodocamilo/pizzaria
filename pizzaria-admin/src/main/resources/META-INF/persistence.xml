@@ -5,6 +5,7 @@
 		
 		<class>br.com.jonathan.pizzaria.modelo.Usuario</class>
 		<class>br.com.jonathan.pizzaria.modelo.Sabor</class>
+		<class>br.com.jonathan.pizzaria.modelo.Bebida</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

@@ -12,6 +12,7 @@
 			<li><a href="${linkTo[IndexController].index()}">Home</a></li>
 			<li><a href="${linkTo[UsuarioController].lista()}">Usuarios</a></li>
 			<li><a href="${linkTo[SaborController].lista()}">Sabores</a></li>
+			<li><a href="${linkTo[BebidaController].lista()}">Bebidas</a></li>
 			<li><a href="${linkTo[LoginController].desloga()}">Deslogar</a></li>
 		</ul>
 	</nav>
