@@ -6,6 +6,10 @@
 		<class>br.com.jonathan.pizzaria.modelo.Usuario</class>
 		<class>br.com.jonathan.pizzaria.modelo.Sabor</class>
 		<class>br.com.jonathan.pizzaria.modelo.Bebida</class>
+		<class>br.com.jonathan.pizzaria.modelo.Mesa</class>
+		<class>br.com.jonathan.pizzaria.modelo.ItemBebida</class>
+		<class>br.com.jonathan.pizzaria.modelo.Pedido</class>
+		<class>br.com.jonathan.pizzaria.modelo.Pizza</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

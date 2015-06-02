@@ -2,25 +2,37 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp"/>
 
+<div class="page-header">
+	<h1>Formulário de usuário</h1>
+</div>
+
 <form action="${linkTo[UsuarioController].adiciona}" method="post">
 	<input type="hidden" name="usuario.id" value="${usuario.id}"/>
 
-	<label for="nome">Nome:</label>
-	<input type="text" id="nome" name="usuario.nome" value="${usuario.nome}" class="form-control"/>
+	<div class="form-group">
+		<label for="nome">Nome:</label>
+		<input type="text" id="nome" name="usuario.nome" value="${usuario.nome}" class="form-control"/>
+	</div>
 	
-	<label for="email">E-mail para login:</label>
-	<input type="text" id="email" name="usuario.email" value="${usuario.email}" class="form-control"/>
+	<div class="form-group">
+		<label for="email">E-mail para login:</label>
+		<input type="text" id="email" name="usuario.email" value="${usuario.email}" class="form-control"/>
+	</div>
 	
-	<label for="senha">Senha:</label>
-	<input type="password" id="senha" name="usuario.senha" class="form-control"/>
+	<div class="form-group">
+		<label for="senha">Senha:</label>
+		<input type="password" id="senha" name="usuario.senha" class="form-control"/>
+	</div>
 	
-	<label for="tipo">Tipo de usuário:</label>
-	<select name="usuario.tipoUsuario" id="tipo">  
-	    <option value="ADMINISTRADOR">Administrador</option>  
-	    <option value="FUNCIONARIO">Funcionario</option>  
-	</select> 
+	<div class="form-group">
+		<label for="tipo">Tipo de usuário:</label>
+		<select name="usuario.tipoUsuario" id="tipo" class="form-control">  
+		    <option value="ADMINISTRADOR">Administrador</option>  
+		    <option value="FUNCIONARIO">Funcionario</option>  
+		</select> 
+	</div>
 	
-	<input type="submit" value="Cadastrar"/>
+	<button type="submit" class="btn btn-default">Cadastrar</button>
 </form>
 
 <c:if test="${not empty errors}">

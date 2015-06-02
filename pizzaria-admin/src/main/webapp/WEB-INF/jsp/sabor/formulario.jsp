@@ -2,16 +2,23 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp"/>
 
-<form action="${linkTo[SaborController].adiciona}" method="post">
+<div class="page-header">
+	<h1>Formulário de sabor</h1>
+</div>
+<form action="${linkTo[SaborController].adiciona}" method="post" role="form">
 	<input type="hidden" name="sabor.id" value="${sabor.id}"/>
 
-	<label for="nome">Nome:</label>
-	<input type="text" id="nome" name="sabor.nome" value="${sabor.nome}" class="form-control"/>
+	<div class="form-group">
+		<label for="nome">Nome:</label>
+		<input type="text" id="nome" name="sabor.nome" value="${sabor.nome}" class="form-control"/>
+	</div>
 	
-	<label for="descricao">Descrição:</label>
-	<input type="text" id="descricao" name="sabor.descricao" value="${sabor.descricao}" class="form-control"/>
+	<div class="form-group">
+		<label for="descricao">Descrição:</label>
+		<input type="text" id="descricao" name="sabor.descricao" value="${sabor.descricao}" class="form-control"/>
+	</div>
 	
-	<input type="submit" value="Cadastrar"/>
+	<button type="submit" class="btn btn-default">Cadastrar</button>
 </form>
 
 <c:if test="${not empty errors}">

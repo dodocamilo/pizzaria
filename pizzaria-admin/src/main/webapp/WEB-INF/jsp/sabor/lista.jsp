@@ -1,7 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:import url="/WEB-INF/jsp/header.jsp"/>
-	<h1>Listagem de sabores</h1>
+	<div class="page-header">
+		<h1>Listagem de sabores</h1>
+    </div>
 	<a href="<c:url value='/sabor/formulario'/>">
 	    Adicionar mais sabores!
 	</a>

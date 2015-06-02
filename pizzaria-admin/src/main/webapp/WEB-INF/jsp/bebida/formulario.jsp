@@ -2,23 +2,33 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp"/>
 
-<form action="${linkTo[BebidaController].adiciona}" method="post">
+<div class="page-header">
+	<h1>Formulário de bebida</h1>
+</div>
+
+<form action="${linkTo[BebidaController].adiciona}" method="post" role="form">
 	<input type="hidden" name="bebida.id" value="${bebida.id}"/>
 
-	<label for="nome">Nome:</label>
-	<input type="text" id="nome" name="bebida.nome" value="${bebida.nome}" class="form-control"/>
+	<div class="form-group">
+		<label for="nome">Nome:</label>
+		<input type="text" id="nome" name="bebida.nome" value="${bebida.nome}" class="form-control"/>
+	</div>
 	
-	<label for="valor">Valor:</label>
-	<input type="text" id="valor" name="bebida.valor" value="${bebida.valor}" class="form-control"/>
+	<div class="form-group">
+		<label for="valor">Valor:</label>
+		<input type="text" id="valor" name="bebida.valor" value="${bebida.valor}" class="form-control"/>
+	</div>
 	
-	<label for="tipo">Tipo de bebida:</label>
-	<select name="bebida.tipoBebida" id="tipo">  
-	    <option value="CERVEJA">Cerveja</option>  
-	    <option value="REFRIGERANTE">Refrigerante</option>  
-	    <option value="SUCO">Suco</option> 
-	</select> 
+	<div class="form-group">
+		<label for="tipo">Tipo de bebida:</label>
+		<select name="bebida.tipoBebida" id="tipo" class="form-control">  
+		    <option value="CERVEJA">Cerveja</option>  
+		    <option value="REFRIGERANTE">Refrigerante</option>  
+		    <option value="SUCO">Suco</option> 
+		</select> 
+	</div>
 		
-	<input type="submit" value="Cadastrar"/>
+	<button type="submit" class="btn btn-default">Cadastrar</button>
 </form>
 
 <c:if test="${not empty errors}">
