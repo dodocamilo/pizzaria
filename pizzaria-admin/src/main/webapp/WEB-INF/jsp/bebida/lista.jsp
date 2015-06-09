@@ -8,12 +8,14 @@
 	<a href="<c:url value='/bebida/formulario'/>">
 	    Adicionar mais bebidas!
 	</a>
-	<table class="table table-stripped table-hover table-bordered">
+	<table class="table table-striped table-hover table-bordered">
 		<thead>
 			<tr>
 				<th>Nome</th>
 				<th>Valor</th>
 				<th>Tipo</th>
+				<th>Remover</th>
+				<th>Editar</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,10 +25,14 @@
 				<td>${bebida.valor}</td>
 				<td>${bebida.tipoBebida}</td>
 				<td>
-				  <a href="<c:url value='/bebida/remove?id=${bebida.id}'/>">Remover</a>
+				  <a href="<c:url value='/bebida/remove?id=${bebida.id}'/>">
+				  	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				  </a>
 				</td>
 				<td>
-				  <a href="<c:url value='/bebida/edita?id=${bebida.id}'/>">Editar</a>
+				  <a href="<c:url value='/bebida/edita?id=${bebida.id}'/>">
+				  	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				  </a>
 				</td>
 			</tr>
 			</c:forEach>

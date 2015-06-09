@@ -6,7 +6,7 @@
 	<h1>Formulário de usuário</h1>
 </div>
 
-<form action="${linkTo[UsuarioController].adiciona}" method="post">
+<form action="${linkTo[UsuarioController].adiciona}" method="post" role="form">
 	<input type="hidden" name="usuario.id" value="${usuario.id}"/>
 
 	<div class="form-group">

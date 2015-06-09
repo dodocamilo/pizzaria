@@ -1,5 +1,6 @@
 package br.com.jonathan.pizzaria.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -27,6 +28,15 @@ public class SaborDao {
 	public void remove(Integer id) {
 		Sabor saborEncontrado = buscaPorId(id);
 		manager.remove(saborEncontrado);
+	}
+	
+	public List<Sabor> recarrega(List<Sabor> sabores) {
+		List<Sabor> saboresRecarregados = new ArrayList<Sabor>();
+		for (Sabor sabor : sabores) {
+			sabor = buscaPorId(sabor.getId());
+			saboresRecarregados.add(sabor);
+		}
+		return saboresRecarregados;
 	}
 
 }

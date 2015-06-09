@@ -31,6 +31,14 @@
 	            <li><a href="${linkTo[PedidoController].categoria()}">Pedido</a></li>
 	          </ul>
 	          <ul class="nav navbar-nav navbar-right">
+	          	<c:if test="${empty carrinho or carrinho.totalDeItens eq 0}">
+	          		<li><a href="${linkTo[CarrinhoController].lista()}">Carrinho <span class="badge">0</span></a></li>
+	          	</c:if>
+	          	<c:if test="${carrinho.totalDeItens > 0}">
+	          		<li><a href="${linkTo[CarrinhoController].lista()}">
+	          			Carrinho <span class="badge">${carrinho.totalDeItens}</span>
+	          		</a></li>
+	          	</c:if>
 	            <li><a href="${linkTo[LoginController].desloga()}">Deslogar</a></li>
 	          </ul>
 	        </div>

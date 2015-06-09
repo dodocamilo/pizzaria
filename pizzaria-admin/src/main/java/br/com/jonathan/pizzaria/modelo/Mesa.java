@@ -1,10 +1,12 @@
 package br.com.jonathan.pizzaria.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Mesa {
+public class Mesa implements Serializable {
 
 	@Id
 	private Integer numero;

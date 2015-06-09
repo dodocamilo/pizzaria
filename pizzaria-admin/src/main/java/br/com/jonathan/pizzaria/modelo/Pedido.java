@@ -1,5 +1,8 @@
 package br.com.jonathan.pizzaria.modelo;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,17 +17,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Pedido {
+public class Pedido implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Pizza> pizzas;
+	private List<Pizza> pizzas = new ArrayList<Pizza>();
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	private Set<ItemBebida> bebidas;
+	private Set<ItemBebida> bebidas = new HashSet<ItemBebida>();
 	
 	@ManyToOne
 	private Usuario realizadorPedido;
@@ -89,6 +92,10 @@ public class Pedido {
 
 	public void adicionarPizza(Pizza pizza) {
 		this.pizzas.add(pizza);
+	}
+	
+	public int getTotalDeItens() {
+		return pizzas.size() + bebidas.size();
 	}
 	
 }

@@ -1,5 +1,6 @@
 package br.com.jonathan.pizzaria.modelo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Pizza {
 
@@ -18,12 +21,17 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@NotEmpty
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Sabor> sabores;
 
 	@Enumerated(EnumType.STRING)
 	private TamanhoPizza tamanhoPizza;
-
+	
+	private String observacao;
+	
+	private Integer quantidade;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -46,6 +54,26 @@ public class Pizza {
 
 	public void setTamanhoPizza(TamanhoPizza tamanhoPizza) {
 		this.tamanhoPizza = tamanhoPizza;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public BigDecimal getValor() {
+		return tamanhoPizza.getValor().multiply(new BigDecimal(quantidade));
 	}
 
 }
