@@ -9,6 +9,7 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.jonathan.pizzaria.dao.SaborDao;
+import br.com.jonathan.pizzaria.modelo.ItemBebida;
 import br.com.jonathan.pizzaria.modelo.Pizza;
 import br.com.jonathan.pizzaria.modelo.Sabor;
 
@@ -29,6 +30,13 @@ public class CarrinhoController {
 		result.redirectTo(PedidoController.class).categoria();
 	}
 	
+	public void adicionaBebida(@Valid ItemBebida itemBebida) {
+		validator.onErrorRedirectTo(BebidaController.class).lista();
+		carrinho.adicionarItemBebida(itemBebida);
+		result.include("mensagem", "Bebida incluída com sucesso!");
+		result.redirectTo(BebidaController.class).lista();
+	}
+	
 	public void removePizza() {
 		
 	}
@@ -39,6 +47,7 @@ public class CarrinhoController {
 	
 	public void lista() {
 		result.include("pizzas", carrinho.getPizzas());
+		result.include("itensBebida", carrinho.getItensBebida());
 	}
 	
 	public int getTotalDeItens() {

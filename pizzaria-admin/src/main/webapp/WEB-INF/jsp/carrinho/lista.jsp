@@ -4,6 +4,7 @@
 	<div class="page-header">
 		<h1>Carrinho</h1>
     </div>
+    <h3>Pizzas</h3>
 	<table class="table table-stripped table-hover table-bordered">
 		<thead>
 			<tr>
@@ -35,6 +36,41 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	
+	<h3>Bebidas</h3>
+	<table class="table table-striped table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Tipo</th>
+				<th>Valor</th>
+				<th>Quantidade</th>
+				<th>Remover</th>
+				<th>Editar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${itensBebida}" var="itemBebida">
+			<tr>
+				<td>${itemBebida.bebida.nome}</td>
+				<td>${itemBebida.bebida.tipoBebida}</td>
+				<td>${itemBebida.bebida.valor}</td>
+				<td>${itemBebida.quantidade}</td>
+				<td>
+				  <a href="<c:url value='/bebida/remove?id=${itemBebida.bebida.id}'/>">
+				  	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				  </a>
+				</td>
+				<td>
+				  <a href="<c:url value='/bebida/edita?id=${itemBebida.bebida.id}'/>">
+				  	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				  </a>
+				</td>
+			</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	
 	
 	<c:if test="${not empty mensagem}">
 	    <div class="alert alert-success">${mensagem}</div>

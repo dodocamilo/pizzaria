@@ -1,28 +1,29 @@
 package br.com.jonathan.pizzaria.modelo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
 
 @Entity
-public class ItemBebida {
+public class ItemBebida implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@Min(1)
 	private Integer quantidade;
 
 	private BigDecimal valorTotal;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Bebida> bebidas;
+	@ManyToOne
+	private Bebida bebida;
 
 	public Integer getId() {
 		return id;
@@ -48,12 +49,12 @@ public class ItemBebida {
 		this.valorTotal = valorTotal;
 	}
 
-	public List<Bebida> getBebidas() {
-		return bebidas;
+	public Bebida getBebida() {
+		return bebida;
 	}
 
-	public void setBebidas(List<Bebida> bebidas) {
-		this.bebidas = bebidas;
+	public void setBebida(Bebida bebida) {
+		this.bebida = bebida;
 	}
 
 }

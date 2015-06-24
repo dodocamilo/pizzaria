@@ -1,5 +1,6 @@
 package br.com.jonathan.pizzaria.modelo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import javax.validation.constraints.DecimalMin;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class Bebida {
+public class Bebida implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

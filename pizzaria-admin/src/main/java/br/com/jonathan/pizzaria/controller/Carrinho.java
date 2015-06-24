@@ -2,6 +2,7 @@ package br.com.jonathan.pizzaria.controller;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -33,6 +34,10 @@ public class Carrinho implements Serializable {
 	
 	public List<Pizza> getPizzas() {
 		return pedido.getPizzas();
+	}
+	
+	public List<ItemBebida> getItensBebida() {
+		return new ArrayList<ItemBebida>(pedido.getBebidas());
 	}
 	
 	public int getTotalDeItens() {

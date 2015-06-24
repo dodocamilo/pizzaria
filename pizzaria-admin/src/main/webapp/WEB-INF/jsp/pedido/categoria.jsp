@@ -21,7 +21,7 @@
 	<div class="caption">
 		<h3>Bebida</h3>
 	</div>
-	<a href="${linkTo[PedidoController].escolherBebida()}">
+	<a href="${linkTo[BebidaController].lista()}">
 		<img src="<c:url value='/images/bebida.jpg'/>" class="img-thumbnail" 
 			style="height: 80%; width: 80%; display: block;" alt="Bebida">
 	</a>
