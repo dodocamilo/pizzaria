@@ -8,10 +8,15 @@ import javax.validation.Valid;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.jonathan.pizzaria.dao.PedidoDao;
 import br.com.jonathan.pizzaria.dao.SaborDao;
 import br.com.jonathan.pizzaria.modelo.ItemBebida;
+import br.com.jonathan.pizzaria.modelo.Mesa;
+import br.com.jonathan.pizzaria.modelo.Pedido;
 import br.com.jonathan.pizzaria.modelo.Pizza;
 import br.com.jonathan.pizzaria.modelo.Sabor;
+import br.com.jonathan.pizzaria.modelo.StatusPedido;
+import br.com.jonathan.pizzaria.seguranca.UsuarioLogado;
 
 @Controller
 public class CarrinhoController {
@@ -20,6 +25,8 @@ public class CarrinhoController {
 	@Inject private Result result;
 	@Inject private SaborDao saborDao;
 	@Inject private Validator validator;
+	@Inject private PedidoDao pedidoDao;
+	@Inject private UsuarioLogado usuarioLogado;
 	
 	public void adicionaPizza(@Valid Pizza pizza) {
 		validator.onErrorRedirectTo(PedidoController.class).escolherPizza();
@@ -48,9 +55,21 @@ public class CarrinhoController {
 	public void lista() {
 		result.include("pizzas", carrinho.getPizzas());
 		result.include("itensBebida", carrinho.getItensBebida());
+		result.include("valorTotal", carrinho.getPedido().getValorTotal());
 	}
 	
 	public int getTotalDeItens() {
 		return carrinho.getTotalDeItens();
+	}
+	
+	public void concluir(@Valid Mesa mesa) {
+		validator.onErrorRedirectTo(this).lista();
+		Pedido pedido = carrinho.getPedido();
+		pedido.setMesa(mesa);
+		pedido.setStatusPedido(StatusPedido.ABERTO);
+		pedido.setRealizadorPedido(usuarioLogado.getUsuario());
+		pedidoDao.adiciona(pedido);
+		result.include("mensagem", "Pedido cadastrado com sucesso!");
+		result.redirectTo(this).lista();
 	}
 }

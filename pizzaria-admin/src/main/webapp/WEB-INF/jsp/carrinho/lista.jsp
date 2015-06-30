@@ -10,6 +10,7 @@
 			<tr>
 				<th>Sabor</th>
 				<th>Tamanho</th>
+				<th>Valor</th>
 				<th>Observação</th>
 				<th>Remover</th>
 				<th>Editar</th>
@@ -25,6 +26,7 @@
 				</c:forEach>
 				</td>
 				<td>${pizza.tamanhoPizza}</td>
+				<td>${pizza.valor}</td>
 				<td>${pizza.observacao}</td>
 				<td>
 				  <a href="<c:url value='/pedido/removePizza?id=${sabor.id}'/>">Remover</a>
@@ -54,7 +56,7 @@
 			<tr>
 				<td>${itemBebida.bebida.nome}</td>
 				<td>${itemBebida.bebida.tipoBebida}</td>
-				<td>${itemBebida.bebida.valor}</td>
+				<td>${itemBebida.valorTotal}</td>
 				<td>${itemBebida.quantidade}</td>
 				<td>
 				  <a href="<c:url value='/bebida/remove?id=${itemBebida.bebida.id}'/>">
@@ -71,9 +73,25 @@
 		</tbody>
 	</table>
 	
+	<form action="${linkTo[CarrinhoController].concluir}" method="post">
+	
+		<div class="form-group">
+			<label for="numero">Número da mesa:</label>
+			<input type="text" id="numero" name="mesa.numero" value="${mesa.numero}" class="form-control"/>
+		</div>
+		
+		<button type="submit" class="btn btn-default">Concluir pedido (Total: R$${valorTotal})</button>
+	</form>
 	
 	<c:if test="${not empty mensagem}">
 	    <div class="alert alert-success">${mensagem}</div>
+	</c:if>
+	<c:if test="${not empty errors}">
+	  <div class="alert alert-danger">
+	    <c:forEach var="error" items="${errors}">
+	        ${error.category} - ${error.message}<br />
+	    </c:forEach>
+	  </div>
 	</c:if>
 </body>
 </html>

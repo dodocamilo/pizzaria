@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 
 <c:import url="/WEB-INF/jsp/header.jsp"/>
 
@@ -24,13 +25,14 @@
 			<tr>
 				<td>${bebida.nome}</td>
 				<td>${bebida.tipoBebida}</td>
-				<td>${bebida.valor}</td>
+				<td><fmt:formatNumber value="${bebida.valor}" minFractionDigits="2" type="currency"/></td>
 				<td>
 					<form action="${linkTo[CarrinhoController].adicionaBebida}" method="post" role="form">
 						<input type="hidden" name="itemBebida.bebida.id" value="${bebida.id}" />
 						<input type="hidden" name="itemBebida.bebida.nome" value="${bebida.nome}" />
 						<input type="hidden" name="itemBebida.bebida.tipoBebida" value="${bebida.tipoBebida}" />
-						<input type="hidden" name="itemBebida.bebida.valor" value="${bebida.valor}" />
+						<input type="hidden" name="itemBebida.bebida.valor" 
+							value="<fmt:formatNumber value="${bebida.valor}" minFractionDigits="2"/>" />
 						<input type="text" class="qtde" name="itemBebida.quantidade" value="1"/>
 						<button class="btn btn-default" type="submit">Adicionar ao pedido</button>
 					</form>

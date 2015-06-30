@@ -1,6 +1,7 @@
 package br.com.jonathan.pizzaria.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
@@ -18,6 +19,7 @@ public class LoginController {
 	@Inject private UsuarioLogado usuarioLogado;
 	@Inject private Result result;
 	@Inject private Validator validator;
+	@Inject private HttpSession session;
 	
 	@Open
 	public void formulario() {}
@@ -38,6 +40,7 @@ public class LoginController {
 	@Open
 	public void desloga() {
 		this.usuarioLogado.desloga();
+		this.session.invalidate();
 		this.result.redirectTo(this).formulario();
 	}
 }

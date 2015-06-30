@@ -1,6 +1,7 @@
 package br.com.jonathan.pizzaria.modelo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +33,7 @@ public class Pedido implements Serializable {
 	@ManyToOne
 	private Usuario realizadorPedido;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Mesa mesa;
 	
 	@Enumerated(EnumType.STRING)
@@ -96,6 +97,17 @@ public class Pedido implements Serializable {
 	
 	public int getTotalDeItens() {
 		return pizzas.size() + bebidas.size();
+	}
+	
+	public BigDecimal getValorTotal() {
+		BigDecimal valorTotal = new BigDecimal(0);
+		for (ItemBebida itemBebida : bebidas) {
+			valorTotal = valorTotal.add(itemBebida.getValorTotal());
+		}
+		for (Pizza pizza : pizzas) {
+			valorTotal = valorTotal.add(pizza.getValor());
+		}
+		return valorTotal;
 	}
 	
 }

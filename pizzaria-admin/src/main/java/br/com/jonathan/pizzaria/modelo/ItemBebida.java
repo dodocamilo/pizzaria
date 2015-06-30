@@ -20,8 +20,6 @@ public class ItemBebida implements Serializable {
 	@Min(1)
 	private Integer quantidade;
 
-	private BigDecimal valorTotal;
-
 	@ManyToOne
 	private Bebida bebida;
 
@@ -42,11 +40,9 @@ public class ItemBebida implements Serializable {
 	}
 
 	public BigDecimal getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(BigDecimal valorTotal) {
-		this.valorTotal = valorTotal;
+		BigDecimal total = this.bebida.getValor();
+		total = total.multiply(new BigDecimal(quantidade));
+		return total;
 	}
 
 	public Bebida getBebida() {
